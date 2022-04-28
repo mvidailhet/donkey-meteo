@@ -1,5 +1,5 @@
 
-name: Linting
+name: Linting Pull Pequest
 
 on:
   pull_request:
