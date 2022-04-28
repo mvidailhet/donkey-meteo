@@ -3,15 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>home</ion-title>
+    <ion-title>Donkey Météo</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="showSearchBar()">
+      <ion-button routerLink="/search">
         <ion-icon slot="icon-only" name="search"></ion-icon>
       </ion-button>
     </ion-buttons>
-  </ion-toolbar>
-  <ion-toolbar *ngIf="isSearchBarVisible" color="primary">
-    <ion-searchbar></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
