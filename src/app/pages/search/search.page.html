@@ -11,6 +11,11 @@
 </ion-header>
 
 <ion-content>
+  <app-list-loader
+    [isLoading]="isLoading"
+    [isEmpty]="searchResults?.length === 0"
+    emptyMessage="Aucune localisation trouvée"
+  ></app-list-loader>
   <ion-list *ngFor="let searchResult of searchResults">
     <ion-item>
       <ion-icon name="location" slot="start"></ion-icon>
