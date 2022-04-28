@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Recherche</ion-title>
+    <ion-title>{{ 'PAGES.SEARCH.TITLE' | translate }}</ion-title>
   </ion-toolbar>
   <ion-toolbar color="primary">
     <ion-searchbar></ion-searchbar>
@@ -14,7 +14,7 @@
   <app-list-loader
     [isLoading]="isLoading"
     [isEmpty]="searchResults?.length === 0"
-    emptyMessage="Aucune localisation trouvée"
+    [emptyMessage]="'PAGES.SEARCH.EMPTY_LIST-MESSAGE' | translate"
   ></app-list-loader>
   <ion-list *ngFor="let searchResult of searchResults">
     <ion-item>

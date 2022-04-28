@@ -1,0 +1,8 @@
+{
+  "PAGES": {
+    "SEARCH": {
+      "TITLE": "Recherche",
+      "EMPTY_LIST-MESSAGE": "Aucune localisation trouvée"
+    }
+  }
+}
