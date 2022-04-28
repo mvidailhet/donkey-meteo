@@ -37,7 +37,22 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "warn",
+          {
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_",
+            "caughtErrorsIgnorePattern": "^_"
+          }
+        ],
+        "import/prefer-default-export": "off",
+        "spaced-comment": "off",
+        "@typescript-eslint/lines-between-class-members": "off",
+        "object-curly-newline": "off",
+        "@angular-eslint/no-input-rename": "off",
+        "max-len": "off",
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
       }
     },
     {
