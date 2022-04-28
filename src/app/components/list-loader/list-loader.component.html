@@ -1,0 +1,4 @@
+<div class="screen-centerer" *ngIf="isLoading || isEmpty">
+  <ion-spinner *ngIf="isLoading" class="main-loader" name="crescent" color="primary"></ion-spinner>
+  <span *ngIf="!isLoading && isEmpty">{{ emptyMessage }}</span>
+</div>
