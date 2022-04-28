@@ -1,8 +1,12 @@
 {
+  "GLOBAL": {
+    "APP_TITLE": "Donkey Météo"
+  },
   "PAGES": {
     "SEARCH": {
       "TITLE": "Recherche",
-      "EMPTY_LIST-MESSAGE": "Aucune localisation trouvée"
+      "EMPTY_LIST-MESSAGE": "Aucune localisation trouvée",
+      "SEARCHBAR-PLACEHOLDER": "Chercher une ville."
     }
   }
 }
