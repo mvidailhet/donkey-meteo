@@ -19,5 +19,6 @@ jobs:
       - name: Test code
         run: npm run test:ci
       - uses: IgnusG/jest-report-action@v2.3.3
+        if: always()
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
