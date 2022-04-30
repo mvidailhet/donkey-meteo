@@ -16,8 +16,8 @@ jobs:
           node-version: '14'
       - name: Install dependencies
         run: npm ci
+      - name: Test code
+        run: npm run test:ci
       - uses: IgnusG/jest-report-action@v2.3.3
         with:
           access-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Test code
-        run: npm run test:ci
