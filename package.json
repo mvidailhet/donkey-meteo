@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:ci": "ng test --reporters=jest-junit",
+    "test:ci": "ng test --reporters=default --reporters=jest-junit",
     "lint": "ng lint",
     "prepare": "husky install"
   },
@@ -68,8 +68,9 @@
     ]
   },
   "jest-junit": {
-    "suiteName": "jest tests",
-    "usePathForSuiteName": "true",
+    "suiteNameTemplate": "{filepath}",
+    "classNameTemplate": "{classname}",
+    "titleTemplate": "{title}",
     "reportTestSuiteErrors": true
   }
 }
