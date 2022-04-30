@@ -1,8 +1,9 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,7 @@ export function createTranslateLoader(http: HttpClient) {
       },
     }),
   ],
-  providers: [],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

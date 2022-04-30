@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "defaultProject": "app",
   "newProjectRoot": "projects",
   "projects": {
     "app": {
@@ -27,17 +28,18 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              },
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/theme/variables.scss", "src/global.scss"],
             "scripts": []
           },
           "configurations": {
@@ -60,7 +62,14 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all"
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
             },
             "development": {
               "buildOptimizer": false,
@@ -106,43 +115,18 @@
               "src/**/*.html"
             ]
           }
-        },
-        "ionic-cordova-serve": {
-          "builder": "@ionic/angular-toolkit:cordova-serve",
-          "options": {
-            "cordovaBuildTarget": "app:ionic-cordova-build",
-            "devServerTarget": "app:serve"
-          },
-          "configurations": {
-            "production": {
-              "cordovaBuildTarget": "app:ionic-cordova-build:production",
-              "devServerTarget": "app:serve:production"
-            }
-          }
-        },
-        "ionic-cordova-build": {
-          "builder": "@ionic/angular-toolkit:cordova-build",
-          "options": {
-            "browserTarget": "app:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "app:build:production"
-            }
-          }
         }
       }
     }
   },
-  "defaultProject": "app",
   "cli": {
     "defaultCollection": "@ionic/angular-toolkit"
   },
   "schematics": {
-    "@ionic/schematics-angular:component": {
+    "@ionic/angular-toolkit:component": {
       "styleext": "scss"
     },
-    "@ionic/schematics-angular:page": {
+    "@ionic/angular-toolkit:page": {
       "styleext": "scss"
     }
   }
