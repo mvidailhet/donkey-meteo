@@ -4,15 +4,15 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateTestingModule } from 'ngx-translate-testing';
 import { ComponentsModule } from '../../components/components.module';
 import * as frenchTranslation from '../../../assets/i18n/fr.json';
-import { SearchPage } from './search.page';
+import { HomePage } from './home.page';
 
-describe('SearchPage', () => {
-  let component: SearchPage;
-  let fixture: ComponentFixture<SearchPage>;
+describe('HomePage', () => {
+  let component: HomePage;
+  let fixture: ComponentFixture<HomePage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [SearchPage],
+      declarations: [HomePage],
       imports: [
         RouterTestingModule,
         TranslateTestingModule.withTranslations(frenchTranslation),
@@ -21,7 +21,7 @@ describe('SearchPage', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SearchPage);
+    fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

@@ -53,7 +53,8 @@
         "@angular-eslint/no-input-rename": "off",
         "max-len": "off",
         "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
-        "@angular-eslint/component-class-suffix": "off"
+        "@angular-eslint/component-class-suffix": "off",
+        "class-methods-use-this": "off"
       }
     },
     {
