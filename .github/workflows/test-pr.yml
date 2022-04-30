@@ -9,6 +9,7 @@ on:
 jobs:
   test-run:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -17,4 +18,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Test code
-        run: npm run test
+        run: npm run test:ci
+      - uses: IgnusG/jest-report-action@v2.3.3
+        if: always()
+        with:
+          access-token: ${{ secrets.GITHUB_TOKEN }}

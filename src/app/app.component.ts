@@ -7,6 +7,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  title = 'donkey-meteo';
   constructor(translate: TranslateService) {
     translate.use('fr');
   }
