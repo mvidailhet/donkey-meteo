@@ -17,6 +17,30 @@ export class PlacesService {
       const place = autocomplete.getPlace();
       this.placeSubject.next(place);
       console.log('place :>> ', place);
+      console.log(this.getPostCode(place));
+      console.log(this.getCity(place));
     });
+  }
+
+  getAddrComponent(place: any, componentTemplate: any): any {
+    let result;
+
+    place.address_components.forEach((component: any) => {
+      const addressType = component.types[0];
+      if (componentTemplate[addressType]) {
+        result = component[componentTemplate[addressType]];
+      }
+    });
+    return result;
+  }
+
+  getPostCode(place: any): any {
+    const COMPONENT_TEMPLATE = { postal_code: 'long_name' };
+    return this.getAddrComponent(place, COMPONENT_TEMPLATE);
+  }
+
+  getCity(place: any): any {
+    const COMPONENT_TEMPLATE = { locality: 'long_name' };
+    return this.getAddrComponent(place, COMPONENT_TEMPLATE);
   }
 }

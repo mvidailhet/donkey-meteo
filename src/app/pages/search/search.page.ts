@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IonSearchbar } from '@ionic/angular';
 import { PlacesService } from '../../services/google/places.service';
 
@@ -16,8 +16,12 @@ export class SearchPage implements OnInit, AfterViewInit {
   isLoading = true;
   searchResults: SearchResult[] | undefined;
   @ViewChild('searchbarInput') searchbarInput: IonSearchbar | undefined;
+  @ViewChild('mapElement') mapElement: ElementRef | undefined;
+  map: any;
+  service: any;
 
   constructor(private placesService: PlacesService) {}
+
   ngAfterViewInit(): void {
     this.getPlaceAutocomplete();
   }
