@@ -1,11 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
+export interface Place {
+  name: string;
+  postal_code?: string;
+  location: {
+    lat: number;
+    lng: number;
+  };
+}
+
+export interface GoogleMapPlace {
+  long_name: string;
+  short_name: string;
+  types: string[];
+  [key: string]: string | string[];
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class PlacesService {
-  public placeSubject: Subject<google.maps.places.PlaceResult> = new Subject<google.maps.places.PlaceResult>();
+  public placeSubject = new Subject<Place>();
   public placeObservable = this.placeSubject.asObservable();
 
   getPlaceAutocomplete(inputElement: HTMLInputElement): void {
@@ -15,20 +31,33 @@ export class PlacesService {
     });
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place = autocomplete.getPlace();
-      this.placeSubject.next(place);
-      console.log('place :>> ', place);
-      console.log(this.getPostCode(place));
-      console.log(this.getCity(place));
+
+      console.log(place);
+
+      const lat = place.geometry?.location?.lat();
+      const lng = place.geometry?.location?.lng();
+      if (!lat || !lng) throw new Error('Place does not have a location');
+
+      const resultPlace: Place = {
+        name: this.getCity(place),
+        postal_code: this.getPostCode(place),
+        location: {
+          lat,
+          lng,
+        },
+      };
+      this.placeSubject.next(resultPlace);
     });
   }
 
-  getAddrComponent(place: any, componentTemplate: any): any {
+  getAddrComponent(place: any, componentTemplate: { [key: string]: string }): string | undefined {
     let result;
 
-    place.address_components.forEach((component: any) => {
+    place.address_components.forEach((component: GoogleMapPlace) => {
       const addressType = component.types[0];
       if (componentTemplate[addressType]) {
-        result = component[componentTemplate[addressType]];
+        const key: string = componentTemplate[addressType];
+        result = component[key];
       }
     });
     return result;
