@@ -11,7 +11,7 @@ export class PlacesService {
   getPlaceAutocomplete(inputElement: HTMLInputElement): void {
     const autocomplete = new google.maps.places.Autocomplete(inputElement, {
       componentRestrictions: { country: ['FR'] },
-      types: ['establishment', 'geocode'],
+      types: ['(cities)'],
     });
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place = autocomplete.getPlace();
