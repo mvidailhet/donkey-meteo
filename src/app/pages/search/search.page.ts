@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { IonSearchbar } from '@ionic/angular';
+import { PlacesService } from '../../services/google/places.service';
 
 export interface SearchResult {
   city: string;
@@ -10,9 +12,15 @@ export interface SearchResult {
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
 })
-export class SearchPage implements OnInit {
+export class SearchPage implements OnInit, AfterViewInit {
   isLoading = true;
   searchResults: SearchResult[] | undefined;
+  @ViewChild('searchbarInput') searchbarInput: IonSearchbar | undefined;
+
+  constructor(private placesService: PlacesService) {}
+  ngAfterViewInit(): void {
+    this.getPlaceAutocomplete();
+  }
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -32,5 +40,10 @@ export class SearchPage implements OnInit {
       ];
       this.isLoading = false;
     }, 3000);
+  }
+
+  async getPlaceAutocomplete() {
+    if (!this.searchbarInput) throw new Error('No searchbar input found !');
+    this.placesService.getPlaceAutocomplete(await this.searchbarInput.getInputElement());
   }
 }
