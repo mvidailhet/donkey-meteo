@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Injectable, NgZone } from '@angular/core';
+import { ReplaySubject, Subject } from 'rxjs';
 
 export interface Place {
   name: string;
@@ -21,8 +21,11 @@ export interface GoogleMapPlace {
   providedIn: 'root',
 })
 export class PlacesService {
-  public placeSubject = new Subject<Place>();
-  public placeObservable = this.placeSubject.asObservable();
+  public placeSubject = new ReplaySubject<Place>();
+  public place$ = this.placeSubject.asObservable();
+  public currentCity: Place | undefined;
+
+  constructor(private ngZone: NgZone) {}
 
   getPlaceAutocomplete(inputElement: HTMLInputElement): void {
     const autocomplete = new google.maps.places.Autocomplete(inputElement, {
@@ -31,9 +34,6 @@ export class PlacesService {
     });
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
       const place = autocomplete.getPlace();
-
-      console.log(place);
-
       const lat = place.geometry?.location?.lat();
       const lng = place.geometry?.location?.lng();
       if (!lat || !lng) return;
@@ -46,7 +46,11 @@ export class PlacesService {
           lng,
         },
       };
-      this.placeSubject.next(resultPlace);
+
+      this.ngZone.run(() => {
+        this.placeSubject.next(resultPlace);
+        this.currentCity = resultPlace;
+      });
     });
   }
 
