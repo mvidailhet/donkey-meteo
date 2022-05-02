@@ -36,7 +36,7 @@ export class PlacesService {
 
       const lat = place.geometry?.location?.lat();
       const lng = place.geometry?.location?.lng();
-      if (!lat || !lng) throw new Error('Place does not have a location');
+      if (!lat || !lng) return;
 
       const resultPlace: Place = {
         name: this.getCity(place),
