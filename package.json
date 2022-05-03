@@ -46,6 +46,7 @@
     "@angular/cli": "~13.0.4",
     "@angular/compiler-cli": "~13.0.0",
     "@ionic/angular-toolkit": "latest",
+    "@types/google.maps": "^3.48.7",
     "@types/jest": "^27.4.1",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.17.0",

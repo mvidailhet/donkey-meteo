@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ city?.name }}
+      <ng-container *ngIf="city?.postal_code"> - {{ city?.postal_code }} </ng-container>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> </ion-content>
