@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PlacesService } from 'src/app/services/google/places.service';
+import { PlacesService } from '../../services/google/places.service';
 
 @Component({
   selector: 'app-city',
