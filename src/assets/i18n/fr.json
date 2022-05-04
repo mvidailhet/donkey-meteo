@@ -7,6 +7,12 @@
       "TITLE": "Recherche",
       "EMPTY_LIST-MESSAGE": "Aucune localisation trouvée",
       "SEARCHBAR-PLACEHOLDER": "Chercher une ville."
+    },
+    "CITY": {
+      "TABS": {
+        "MAIN": "15 jours",
+        "SECOND": "Journée"
+      }
     }
   }
 }
