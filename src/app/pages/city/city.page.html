@@ -7,4 +7,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-segment>
+    <ion-segment-button value="friends">
+      <ion-label routerLink="/fortnight">{{'PAGES.CITY.TABS.MAIN' | translate }}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="enemies">
+      <ion-label routerLink="/dayli">{{'PAGES.CITY.TABS.SECOND' | translate }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-content>
