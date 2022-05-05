@@ -8,9 +8,19 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CityPageRoutingModule } from './city-routing.module';
 
 import { CityPage } from './city.page';
+import { FortnightPageModule } from '../fortnight/fortnight.module';
+import { OneDayPageModule } from '../one-day/one-day.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, CityPageRoutingModule, TranslateModule.forChild()],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    CityPageRoutingModule,
+    FortnightPageModule,
+    OneDayPageModule,
+    TranslateModule.forChild(),
+  ],
   declarations: [CityPage],
 })
 export class CityPageModule {}

@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'city/:name',
     loadChildren: () => import('./pages/city/city.module').then((m) => m.CityPageModule),
   },
+  {
+    path: 'fortnight',
+    loadChildren: () => import('./pages/fortnight/fortnight.module').then((m) => m.FortnightPageModule),
+  },
+  {
+    path: 'one-day',
+    loadChildren: () => import('./pages/one-day/one-day.module').then((m) => m.OneDayPageModule),
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
