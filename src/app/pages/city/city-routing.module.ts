@@ -7,6 +7,31 @@ const routes: Routes = [
   {
     path: '',
     component: CityPage,
+    children: [
+      {
+        path: 'fortnight',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../fortnight/fortnight.module').then((m) => m.FortnightPageModule),
+          },
+        ],
+      },
+      {
+        path: 'one-day',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../one-day/one-day.module').then((m) => m.OneDayPageModule),
+          },
+        ],
+      },
+      {
+        path: '',
+        redirectTo: 'fortnight',
+        pathMatch: 'full',
+      },
+    ],
   },
 ];
 

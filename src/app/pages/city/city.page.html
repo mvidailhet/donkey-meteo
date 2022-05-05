@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
       {{ city?.name }}
       <ng-container *ngIf="city?.postal_code"> - {{ city?.postal_code }} </ng-container>
@@ -8,12 +8,15 @@
 </ion-header>
 
 <ion-content>
-  <ion-segment>
-    <ion-segment-button value="friends">
-      <ion-label routerLink="/fortnight">{{'PAGES.CITY.TABS.MAIN' | translate }}</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="enemies">
-      <ion-label routerLink="/dayli">{{'PAGES.CITY.TABS.SECOND' | translate }}</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="fortnight">
+        <ion-label>15 jours</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="one-day">
+        <ion-label>Journée</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>
