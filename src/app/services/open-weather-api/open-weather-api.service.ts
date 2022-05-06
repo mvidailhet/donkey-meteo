@@ -33,7 +33,7 @@ export class OpenWeatherApiService {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=fr&appid=${OpenWeatherApiService.OPEN_WEATHER_API_KEY}&units=metric`;
     return this.http.get(url);
   }
-  getFortnightWeatherCity(lat: number | undefined, lon: number | undefined) {
+  getOneWeekWeatherCity(lat: number | undefined, lon: number | undefined) {
     const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=fr&appid=${OpenWeatherApiService.OPEN_WEATHER_API_KEY}&units=metric`;
     return this.http.get(url).pipe(tap((response) => response));
   }
