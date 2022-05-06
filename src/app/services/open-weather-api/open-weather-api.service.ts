@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs';
 
 export enum WeatherIconEnum {
   '02d' = 'cloudy-day-3',
@@ -27,8 +28,17 @@ export class OpenWeatherApiService {
   static OPEN_WEATHER_API_KEY = '1b249e0bd50ad0fb76c8c6a32a0836ca';
 
   constructor(private http: HttpClient) {}
-  getWeatherCity(lat: number, lon: number) {
+  getCurrentWeatherCity(lat: number | undefined, lon: number | undefined) {
+    if (!lat || !lon) throw new Error("No value for 'lat' or 'lon'");
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=fr&appid=${OpenWeatherApiService.OPEN_WEATHER_API_KEY}&units=metric`;
     return this.http.get(url);
+  }
+  getFortnightWeatherCity(lat: number | undefined, lon: number | undefined) {
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&lang=fr&appid=${OpenWeatherApiService.OPEN_WEATHER_API_KEY}&units=metric`;
+    return this.http.get(url).pipe(tap((response) => response));
+  }
+
+  convertApiIconToAppIcon(apiIcon: string) {
+    return WeatherIconEnum[apiIcon as keyof typeof WeatherIconEnum];
   }
 }
