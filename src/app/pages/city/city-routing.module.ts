@@ -9,11 +9,11 @@ const routes: Routes = [
     component: CityPage,
     children: [
       {
-        path: 'fortnight',
+        path: 'one-week',
         children: [
           {
             path: '',
-            loadChildren: () => import('../fortnight/fortnight.module').then((m) => m.FortnightPageModule),
+            loadChildren: () => import('../one-week/one-week.module').then((m) => m.OneWeekPageModule),
           },
         ],
       },
@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'fortnight',
+        redirectTo: 'one-week',
         pathMatch: 'full',
       },
     ],

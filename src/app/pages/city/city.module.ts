@@ -8,7 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CityPageRoutingModule } from './city-routing.module';
 
 import { CityPage } from './city.page';
-import { FortnightPageModule } from '../fortnight/fortnight.module';
+import { OneWeekPageModule } from '../one-week/one-week.module';
 import { OneDayPageModule } from '../one-day/one-day.module';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { OneDayPageModule } from '../one-day/one-day.module';
     FormsModule,
     IonicModule,
     CityPageRoutingModule,
-    FortnightPageModule,
+    OneWeekPageModule,
     OneDayPageModule,
     TranslateModule.forChild(),
   ],

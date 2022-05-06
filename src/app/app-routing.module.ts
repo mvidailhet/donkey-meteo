@@ -20,8 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./pages/city/city.module').then((m) => m.CityPageModule),
   },
   {
-    path: 'fortnight',
-    loadChildren: () => import('./pages/fortnight/fortnight.module').then((m) => m.FortnightPageModule),
+    path: 'one-week',
+    loadChildren: () => import('./pages/one-week/one-week.module').then((m) => m.OneWeekPageModule),
   },
   {
     path: 'one-day',
