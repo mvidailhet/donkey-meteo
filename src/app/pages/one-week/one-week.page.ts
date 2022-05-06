@@ -25,6 +25,8 @@ export class OneWeekPage implements OnInit {
       this.oneWeekForecast.daily.forEach((day: any) => {
         // eslint-disable-next-line no-param-reassign
         day.weather[0].icon = this.openWeatherApiService.convertApiIconToAppIcon(day.weather[0].icon);
+        // eslint-disable-next-line no-param-reassign
+        day.wind_speed = this.openWeatherApiService.convertMeterPerSecondToKilometrePerHour(day.wind_speed);
       });
       console.log('this.oneWeekForecast :', this.oneWeekForecast.daily[0]);
     });

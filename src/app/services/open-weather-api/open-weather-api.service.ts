@@ -41,4 +41,9 @@ export class OpenWeatherApiService {
   convertApiIconToAppIcon(apiIcon: string) {
     return WeatherIconEnum[apiIcon as keyof typeof WeatherIconEnum];
   }
+
+  convertMeterPerSecondToKilometrePerHour(speed: number): number {
+    const convertSpeed = speed * 3.6;
+    return convertSpeed;
+  }
 }
