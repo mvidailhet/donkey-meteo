@@ -188,7 +188,7 @@ export class HomePage implements OnInit {
   ];
   WeatherIconEnum!: WeatherIconEnum;
 
-  constructor(private openWeatherService: OpenWeatherApiService) {}
+  constructor(private openWeatherApiService: OpenWeatherApiService) {}
   ngOnInit(): void {
     this.getCityMapData();
     // console.log('Object.values(WeatherIconEnum).indexOf(cityIcon) :', Object.values(WeatherIconEnum));
@@ -202,14 +202,16 @@ export class HomePage implements OnInit {
 
   getCityMapData() {
     this.cities.forEach((city) => {
-      this.openWeatherService.getWeatherCity(city.location.lat, city.location.lng).subscribe((result: any) => {
-        // eslint-disable-next-line no-param-reassign
-        city.dataWeather = result;
-        // eslint-disable-next-line no-param-reassign
-        city.icon = `assets/amcharts_weather_icons_1.0.0/animated/${
-          WeatherIconEnum[result.weather[0].icon as keyof typeof WeatherIconEnum]
-        }.svg`;
-      });
+      this.openWeatherApiService
+        .getCurrentWeatherCity(city.location.lat, city.location.lng)
+        .subscribe((result: any) => {
+          // eslint-disable-next-line no-param-reassign
+          city.dataWeather = result;
+          // eslint-disable-next-line no-param-reassign
+          city.icon = `assets/amcharts_weather_icons_1.0.0/animated/${this.openWeatherApiService.convertApiIconToAppIcon(
+            result.weather[0].icon,
+          )}.svg`;
+        });
     });
   }
 }

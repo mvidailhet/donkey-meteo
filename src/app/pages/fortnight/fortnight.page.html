@@ -1,7 +1,35 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>fortnight</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content> </ion-content>
+<ion-grid fixed>
+  <ion-row scrollY="true" class="scroll-items">
+    <ng-container *ngIf="fortnightForecast && fortnightForecast.daily && fortnightForecast.daily.length > 0">
+      <ion-col class="item" size="3" *ngFor="let day of fortnightForecast.daily">
+        <ion-card class="card ion-padding">
+          <div class="ion-padding-vertical group-date">
+            <div class="day">{{day.dt * 1000 | date: 'E'}}</div>
+            <div class="date">{{day.dt * 1000 | date: 'dd'}}</div>
+          </div>
+          <i
+            class="icon weather-icon"
+            style="background-image: url(assets/amcharts_weather_icons_1.0.0/animated/{{day.weather[0].icon}}.svg);"
+          ></i>
+          <div class="ion-padding-vertical group-temp">
+            <div class="max-temp">{{day.temp.max | number: '1.0-0'}}°C</div>
+            <div class="min-temp">{{day.temp.min | number: '1.0-0'}}°C</div>
+          </div>
+          <div class="ion-padding-vertical group-temp">
+            <span class="arrow-up">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                style="transform: rotate({{day.wind_deg}}deg);"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 100 100"
+              >
+                <path id="arrow" d="M 50,0 L 100,100 L 50,70 L 0,100" />
+              </svg>
+            </span>
+            {{day.wind_speed}} m/s
+          </div>
+        </ion-card>
+      </ion-col>
+    </ng-container>
+  </ion-row>
+</ion-grid>
