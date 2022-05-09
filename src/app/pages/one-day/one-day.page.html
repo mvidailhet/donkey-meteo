@@ -2,7 +2,7 @@
   <ion-grid fixed>
     <ion-row scrollY="true" class="scroll-items">
       <ng-container *ngIf="oneWeekForecast && oneWeekForecast.daily && oneWeekForecast.daily.length > 0">
-        <ion-col fullscreen *ngFor="let day of oneWeekForecast.daily; let i = index" [hidden]="i !== indexCurrentDay">
+        <ion-col fullscreen *ngFor="let day of oneWeekForecast.daily; let i = index" [hidden]="i !== indexOfDay">
           <!-- <ng-container [hidden]="i === indexCurrentDay"> -->
           <div fullscreen>
             <ion-text class="date ion-text-center ion-text-uppercase" color="primary">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Place, PlacesService } from 'src/app/services/google/places.service';
 import { OpenWeatherApiService, WeatherIconEnum } from 'src/app/services/open-weather-api/open-weather-api.service';
 
@@ -12,7 +13,11 @@ export class OneWeekPage implements OnInit {
   oneWeekForecast: any;
   WeatherIconEnum!: WeatherIconEnum;
 
-  constructor(private placesService: PlacesService, private openWeatherApiService: OpenWeatherApiService) {}
+  constructor(
+    private placesService: PlacesService,
+    private openWeatherApiService: OpenWeatherApiService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.city = this.placesService.currentCity;
@@ -29,6 +34,14 @@ export class OneWeekPage implements OnInit {
         day.wind_speed = this.openWeatherApiService.convertMeterPerSecondToKilometrePerHour(day.wind_speed);
       });
       console.log('this.oneWeekForecast :', this.oneWeekForecast.daily[0]);
+    });
+  }
+
+  goToOneDayPage(index: number) {
+    console.log('index :', index);
+    this.router.navigate([`city/${this.city!.name.toLowerCase()}/one-day`], {
+      fragment: index.toString(),
+      queryParamsHandling: 'preserve',
     });
   }
 }

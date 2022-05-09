@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Place, PlacesService } from 'src/app/services/google/places.service';
 import { OpenWeatherApiService, WeatherIconEnum } from 'src/app/services/open-weather-api/open-weather-api.service';
 
@@ -7,17 +9,27 @@ import { OpenWeatherApiService, WeatherIconEnum } from 'src/app/services/open-we
   templateUrl: './one-day.page.html',
   styleUrls: ['./one-day.page.scss'],
 })
-export class OneDayPage implements OnInit {
+export class OneDayPage implements OnInit, OnDestroy {
   city: Place | undefined;
   oneWeekForecast: any;
   WeatherIconEnum!: WeatherIconEnum;
-  indexCurrentDay = 0;
+  fragmentSubscription: Subscription | undefined;
+  indexOfDay = 0;
 
-  constructor(private placesService: PlacesService, private openWeatherApiService: OpenWeatherApiService) {}
+  constructor(
+    private placesService: PlacesService,
+    private openWeatherApiService: OpenWeatherApiService,
+    private activatedRoute: ActivatedRoute,
+  ) {}
 
   ngOnInit() {
     this.city = this.placesService.currentCity;
     this.getOneWeekWeatherCity(this.city?.location.lat, this.city?.location.lng);
+    this.fragmentSubscription = this.activatedRoute.fragment.subscribe(this.handleFragment);
+  }
+
+  ngOnDestroy(): void {
+    this.fragmentSubscription?.unsubscribe();
   }
 
   getOneWeekWeatherCity(lat: number | undefined, lon: number | undefined) {
@@ -38,4 +50,11 @@ export class OneDayPage implements OnInit {
       console.log('this.oneWeekForecast :', this.oneWeekForecast);
     });
   }
+
+  handleFragment = (fragment: string | null) => {
+    console.log(`fragment : ${fragment}`);
+    if (fragment === null) return;
+    this.indexOfDay = Number(fragment);
+    console.log('this.indexOfDay :', this.indexOfDay);
+  };
 }
