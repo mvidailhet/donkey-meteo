@@ -1,7 +1,104 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>one-day</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content> </ion-content>
+<ion-content>
+  <ion-grid fixed>
+    <ion-row scrollY="true" class="scroll-items">
+      <ng-container *ngIf="oneWeekForecast && oneWeekForecast.daily && oneWeekForecast.daily.length > 0">
+        <ion-col fullscreen *ngFor="let day of oneWeekForecast.daily; let i = index" [hidden]="i !== indexCurrentDay">
+          <!-- <ng-container [hidden]="i === indexCurrentDay"> -->
+          <div fullscreen>
+            <ion-text class="date ion-text-center ion-text-uppercase" color="primary">
+              <div class="day ion-padding-top">{{day.dt * 1000 | date: 'E':'':'fr-FR' | titlecase}}</div>
+              <div class="date ion-padding-bottom">{{day.dt * 1000 | date: 'dd':'':'fr-FR'}}</div>
+            </ion-text>
+            <ion-grid>
+              <ion-row class="ion-align-items-center">
+                <ion-col class="ion-text-center">
+                  <i
+                    class="icon weather-icon"
+                    style="background-image: url(assets/amcharts_weather_icons_1.0.0/animated/{{day.weather[0].icon}}.svg);"
+                  ></i>
+                  <div class="data">{{day.weather[0].description}}</div>
+                </ion-col>
+                <ion-col class="data ion-text-center">
+                  <div class="arrow-up">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      style="transform: rotate({{day.wind_deg}}deg);"
+                      preserveAspectRatio="xMidYMid meet"
+                      viewBox="0 0 100 100"
+                    >
+                      <path id="arrow" d="M 50,0 L 100,100 L 50,70 L 0,100" />
+                    </svg>
+                    <ion-buttons slot="start">
+                      <ion-back-button></ion-back-button>
+                    </ion-buttons>
+                  </div>
+                  <div>{{day.wind_speed | number: '1.0-0':'fr'}} km/h</div>
+                  <div>
+                    {{ 'PAGES.CITY.ONE_DAY.WIND.GUSTS' | translate }} {{day.wind_gust | number: '1.0-0':'fr'}} km/h
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            <ion-card>
+              <ion-card-header>
+                <h2>{{'PAGES.CITY.ONE_DAY.TIME_OF_DAY.MORNING' | translate }}</h2>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-text class="ion-text-center">
+                  <div class="real-temp">{{day.temp.morn | number: '1.0-0':'fr'}}°C</div>
+                  <div>
+                    {{ 'PAGES.CITY.ONE_DAY.TEMPERATURE.FEEL_LIKE' | translate }} {{day.feels_like.morn | number:
+                    '1.0-0':'fr'}}°C
+                  </div>
+                </ion-text>
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-header>
+                <h2>{{'PAGES.CITY.ONE_DAY.TIME_OF_DAY.AFTERNOON' | translate }}</h2>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-text class="ion-text-center">
+                  <div class="real-temp">{{day.temp.day | number: '1.0-0':'fr'}}°C</div>
+                  <div>
+                    {{ 'PAGES.CITY.ONE_DAY.TEMPERATURE.FEEL_LIKE' | translate }} {{day.feels_like.morn | number:
+                    '1.0-0':'fr'}}°C
+                  </div>
+                </ion-text>
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-header>
+                <h2>{{'PAGES.CITY.ONE_DAY.TIME_OF_DAY.EVENING' | translate }}</h2>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-text class="ion-text-center">
+                  <div class="real-temp">{{day.temp.eve | number: '1.0-0':'fr'}}°C</div>
+                  <div>
+                    {{ 'PAGES.CITY.ONE_DAY.TEMPERATURE.FEEL_LIKE' | translate }} {{day.feels_like.eve | number:
+                    '1.0-0':'fr'}}°C
+                  </div>
+                </ion-text>
+              </ion-card-content>
+            </ion-card>
+            <ion-card>
+              <ion-card-header>
+                <h2>{{'PAGES.CITY.ONE_DAY.TIME_OF_DAY.NIGHT' | translate }}</h2>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-text class="ion-text-center">
+                  <div class="real-temp">{{day.temp.night | number: '1.0-0':'fr'}}°C</div>
+                  <div>
+                    {{ 'PAGES.CITY.ONE_DAY.TEMPERATURE.FEEL_LIKE' | translate }} {{day.feels_like.night | number:
+                    '1.0-0':'fr'}}°C
+                  </div>
+                </ion-text>
+              </ion-card-content>
+            </ion-card>
+          </div>
+          <!-- </ng-container> -->
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+</ion-content>
