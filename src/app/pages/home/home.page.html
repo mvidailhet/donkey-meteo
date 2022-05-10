@@ -13,7 +13,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="map" (click)="getPosition($event)">
+  <div class="map">
     <svg
       class="map-svg"
       xmlns="http://www.w3.org/2000/svg"
@@ -186,6 +186,14 @@
         >
           <desc>{{city.dataWeather.weather[0].description}}</desc>
         </image>
+        <rect
+          [attr.x]="city.positionX - 20"
+          [attr.y]="city.positionY - 10"
+          width="100px"
+          height="60px"
+          class="city-overlay"
+          (click)="goToCity(city.city)"
+        />
       </ng-container>
     </svg>
   </div>
