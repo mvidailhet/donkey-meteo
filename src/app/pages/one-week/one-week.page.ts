@@ -38,10 +38,16 @@ export class OneWeekPage implements OnInit {
 
   goToOneDayPage(index: number) {
     console.log('index :', index);
-    this.router.navigate([`city/${this.city!.name.toLowerCase()}/one-day`], {
-      fragment: index.toString(),
-      queryParamsHandling: 'preserve',
-    });
+    if (!this.city) throw new Error('City is not defined');
+
+    this.router.navigate(
+      ['city', this.city.name.toLowerCase(), 'lat', this.city.location.lat, 'lng', this.city.location.lng, 'one-day'],
+      {
+        fragment: index.toString(),
+        queryParamsHandling: 'preserve',
+      },
+    );
+    console.log('ici');
   }
 
   handleParams = (params: Params) => {

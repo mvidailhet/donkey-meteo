@@ -216,7 +216,7 @@ export class HomePage implements OnInit {
     });
   }
 
-  goToCity(place: string) {
-    this.router.navigate([`city/${place.toLowerCase()}`]);
+  goToCity(place: Cities) {
+    this.router.navigate(['city', place.city.toLowerCase(), 'lat', place.location.lat, 'lng', place.location.lng]);
   }
 }
