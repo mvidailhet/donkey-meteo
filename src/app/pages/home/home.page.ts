@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Place, PlacesService } from 'src/app/services/google/places.service';
-import { OpenWeatherApiService, WeatherIconEnum } from 'src/app/services/open-weather-api/open-weather-api.service';
+import { OpenWeatherApiService, WeatherIconEnum } from '../../services/open-weather-api/open-weather-api.service';
 
 export interface Cities {
   city: string;
@@ -190,11 +189,7 @@ export class HomePage implements OnInit {
   ];
   WeatherIconEnum!: WeatherIconEnum;
 
-  constructor(
-    private openWeatherApiService: OpenWeatherApiService,
-    private placesService: PlacesService,
-    private router: Router,
-  ) {}
+  constructor(private openWeatherApiService: OpenWeatherApiService, private router: Router) {}
   ngOnInit(): void {
     this.getCityMapData();
     // console.log('Object.values(WeatherIconEnum).indexOf(cityIcon) :', Object.values(WeatherIconEnum));

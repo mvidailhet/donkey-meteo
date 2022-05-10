@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { OneWeekPage } from './one-week.page';
@@ -10,7 +12,7 @@ describe('OneWeekPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [OneWeekPage],
-      imports: [IonicModule.forRoot()],
+      imports: [HttpClientModule, RouterTestingModule, IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(OneWeekPage);
