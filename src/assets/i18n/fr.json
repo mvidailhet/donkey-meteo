@@ -7,6 +7,26 @@
       "TITLE": "Recherche",
       "EMPTY_LIST-MESSAGE": "Aucune localisation trouvée",
       "SEARCHBAR-PLACEHOLDER": "Chercher une ville."
+    },
+    "CITY": {
+      "TABS": {
+        "MAIN": "7 jours",
+        "SECOND": "Journée"
+      },
+      "ONE_DAY": {
+        "TIME_OF_DAY": {
+          "MORNING": "Matin",
+          "AFTERNOON": "Après-midi",
+          "EVENING": "Soir",
+          "NIGHT": "Nuit"
+        },
+        "TEMPERATURE": {
+          "FEEL_LIKE": "Ressenti"
+        },
+        "WIND": {
+          "GUSTS": "Rafales"
+        }
+      }
     }
   }
 }

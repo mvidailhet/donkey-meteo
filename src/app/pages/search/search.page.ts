@@ -36,7 +36,7 @@ export class SearchPage implements AfterViewInit, OnDestroy {
     this.placesService.getPlaceAutocomplete(await this.searchbarInput.getInputElement());
 
     this.placesSubscription = this.placesService.place$.subscribe((place: Place) => {
-      this.router.navigate([`city/${place.name.toLowerCase()}`]);
+      this.router.navigate(['city', place.name.toLowerCase(), 'lat', place.location.lat, 'lng', place.location.lng]);
     });
   }
 }

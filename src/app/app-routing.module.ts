@@ -16,12 +16,12 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'city/:name',
+    path: 'city/:name/lat/:lat/lng/:lng',
     loadChildren: () => import('./pages/city/city.module').then((m) => m.CityPageModule),
   },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { paramsInheritanceStrategy: 'always' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
