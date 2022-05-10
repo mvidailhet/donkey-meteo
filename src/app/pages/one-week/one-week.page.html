@@ -1,7 +1,7 @@
 <ion-grid fixed>
   <ion-row scrollY="true" class="scroll-items">
     <ng-container *ngIf="oneWeekForecast && oneWeekForecast.daily && oneWeekForecast.daily.length > 0">
-      <ion-col class="item" size="3" *ngFor="let day of oneWeekForecast.daily; let i = index">
+      <ion-col class="item" size="2" *ngFor="let day of oneWeekForecast.daily; let i = index">
         <ion-card class="card ion-padding" (click)="goToOneDayPage(i)">
           <div class="ion-padding-vertical group-date">
             <div class="day">{{day.dt * 1000 | date: 'E':'':'fr-FR' | titlecase}}</div>
