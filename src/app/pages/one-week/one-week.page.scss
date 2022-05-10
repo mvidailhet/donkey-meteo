@@ -1,8 +1,10 @@
+.grid-container {
+  height: 100%;
+}
+
 .scroll-items {
   justify-content: flex-start;
   flex-wrap: nowrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
   height: 100%;
 
   .item {

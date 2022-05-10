@@ -1,38 +1,40 @@
-<ion-grid fixed>
-  <ion-row scrollY="true" class="scroll-items">
-    <ng-container *ngIf="oneWeekForecast && oneWeekForecast.daily && oneWeekForecast.daily.length > 0">
-      <ion-col class="item" size="2" *ngFor="let day of oneWeekForecast.daily; let i = index">
-        <ion-card class="card ion-padding" (click)="goToOneDayPage(i)">
-          <div class="ion-padding-vertical group-date">
-            <div class="day">{{day.dt * 1000 | date: 'E':'':'fr-FR' | titlecase}}</div>
-            <div class="date">{{day.dt * 1000 | date: 'dd':'':'fr-FR'}}</div>
-          </div>
-          <i
-            class="icon weather-icon"
-            style="background-image: url(assets/amcharts_weather_icons_1.0.0/animated/{{day.weather[0].icon}}.svg);"
-          ></i>
-          <div class="ion-padding-vertical group-data">
-            <div class="max-temp">{{day.temp.max | number: '1.0-0':'fr'}}°C</div>
-            <div class="min-temp">{{day.temp.min | number: '1.0-0':'fr'}}°C</div>
-          </div>
-          <div class="ion-padding-vertical group-data">
-            <span class="arrow-up">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                style="transform: rotate({{day.wind_deg}}deg);"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 100 100"
-              >
-                <path id="arrow" d="M 50,0 L 100,100 L 50,70 L 0,100" />
-              </svg>
-              <ion-buttons slot="start">
-                <ion-back-button></ion-back-button>
-              </ion-buttons>
-            </span>
-            {{day.wind_speed | number: '1.0-0':'fr'}} km/h
-          </div>
-        </ion-card>
-      </ion-col>
-    </ng-container>
-  </ion-row>
-</ion-grid>
+<ion-content [scrollEvents]="true" [scrollX]="true">
+  <ion-grid class="grid-container">
+    <ion-row class="scroll-items">
+      <ng-container *ngIf="oneWeekForecast && oneWeekForecast.daily && oneWeekForecast.daily.length > 0">
+        <ion-col class="item" size="2" *ngFor="let day of oneWeekForecast.daily; let i = index">
+          <ion-card class="card ion-padding" (click)="goToOneDayPage(i)">
+            <div class="ion-padding-vertical group-date">
+              <div class="day">{{day.dt * 1000 | date: 'E':'':'fr-FR' | titlecase}}</div>
+              <div class="date">{{day.dt * 1000 | date: 'dd':'':'fr-FR'}}</div>
+            </div>
+            <i
+              class="icon weather-icon"
+              style="background-image: url(assets/amcharts_weather_icons_1.0.0/animated/{{day.weather[0].icon}}.svg);"
+            ></i>
+            <div class="ion-padding-vertical group-data">
+              <div class="max-temp">{{day.temp.max | number: '1.0-0':'fr'}}°C</div>
+              <div class="min-temp">{{day.temp.min | number: '1.0-0':'fr'}}°C</div>
+            </div>
+            <div class="ion-padding-vertical group-data">
+              <span class="arrow-up">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  style="transform: rotate({{day.wind_deg}}deg);"
+                  preserveAspectRatio="xMidYMid meet"
+                  viewBox="0 0 100 100"
+                >
+                  <path id="arrow" d="M 50,0 L 100,100 L 50,70 L 0,100" />
+                </svg>
+                <ion-buttons slot="start">
+                  <ion-back-button></ion-back-button>
+                </ion-buttons>
+              </span>
+              {{day.wind_speed | number: '1.0-0':'fr'}} km/h
+            </div>
+          </ion-card>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+  </ion-grid>
+</ion-content>

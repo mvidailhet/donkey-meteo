@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { IonContent } from '@ionic/angular';
 import { Place, PlacesService } from '../../services/google/places.service';
 import { OpenWeatherApiService, WeatherIconEnum } from '../../services/open-weather-api/open-weather-api.service';
 
@@ -13,6 +14,14 @@ export class OneWeekPage implements OnInit {
   oneWeekForecast: any;
   WeatherIconEnum!: WeatherIconEnum;
 
+  @ViewChild(IonContent, { static: false }) content!: IonContent;
+
+  @HostListener('wheel', ['$event'])
+  handleMouseScroll(event: WheelEvent) {
+    console.log('event :>> ', event);
+    this.contentScrollX(event.deltaY);
+  }
+
   constructor(
     private openWeatherApiService: OpenWeatherApiService,
     private router: Router,
@@ -22,6 +31,16 @@ export class OneWeekPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(this.handleParams);
+  }
+
+  currentContentXScroll = 0;
+
+  async contentScrollX(x: number) {
+    this.currentContentXScroll += x;
+    if (this.currentContentXScroll < 0) this.currentContentXScroll = 0;
+    const scrollElement = await this.content.getScrollElement();
+    this.content?.scrollToPoint(this.currentContentXScroll, 0);
+    console.log('this.currentContentXScroll :>> ', this.currentContentXScroll);
   }
 
   getOneWeekWeatherCity(lat: number | undefined, lon: number | undefined) {
@@ -55,4 +74,12 @@ export class OneWeekPage implements OnInit {
     this.city = this.placesService.getCityFromRouteParams(params);
     this.getOneWeekWeatherCity(this.city.location.lat, this.city.location.lng);
   };
+
+  onDaysScroll(event: any) {
+    console.log('event :', event);
+  }
+
+  logScrolling(event: any) {
+    console.log('logScrolling : When Scrolling', event);
+  }
 }
