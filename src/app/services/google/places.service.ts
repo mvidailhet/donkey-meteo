@@ -1,4 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Subject } from 'rxjs';
 import { StorageService } from '../storage.service';
 
@@ -26,7 +27,7 @@ export class PlacesService {
   public place$ = this.placeSubject.asObservable();
   public currentCity: Place | undefined;
 
-  constructor(private ngZone: NgZone) {}
+  constructor(private ngZone: NgZone, private activatedRoute: ActivatedRoute) {}
 
   getPlaceAutocomplete(inputElement: HTMLInputElement): void {
     const autocomplete = new google.maps.places.Autocomplete(inputElement, {
@@ -75,5 +76,15 @@ export class PlacesService {
   getCity(place: any): any {
     const COMPONENT_TEMPLATE = { locality: 'long_name' };
     return this.getAddrComponent(place, COMPONENT_TEMPLATE);
+  }
+
+  getCityFromRouteParams(params: Params) {
+    return {
+      name: params['name'],
+      location: {
+        lat: params['lat'],
+        lng: params['lng'],
+      },
+    };
   }
 }

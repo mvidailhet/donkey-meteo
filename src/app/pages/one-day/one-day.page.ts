@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Place } from '../../services/google/places.service';
+import { Place, PlacesService } from '../../services/google/places.service';
 import { OpenWeatherApiService, WeatherIconEnum } from '../../services/open-weather-api/open-weather-api.service';
 
 @Component({
@@ -16,7 +16,11 @@ export class OneDayPage implements OnInit, OnDestroy {
   fragmentSubscription: Subscription | undefined;
   indexOfDay = 0;
 
-  constructor(private openWeatherApiService: OpenWeatherApiService, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private openWeatherApiService: OpenWeatherApiService,
+    private activatedRoute: ActivatedRoute,
+    private placesService: PlacesService,
+  ) {}
 
   ngOnInit() {
     this.fragmentSubscription = this.activatedRoute.fragment.subscribe(this.handleFragment);
@@ -53,13 +57,7 @@ export class OneDayPage implements OnInit, OnDestroy {
   };
 
   handleParams = (params: Params) => {
-    this.city = {
-      name: params['name'],
-      location: {
-        lat: params['lat'],
-        lng: params['lng'],
-      },
-    };
+    this.city = this.placesService.getCityFromRouteParams(params);
     this.getOneWeekWeatherCity(this.city.location.lat, this.city.location.lng);
   };
 }

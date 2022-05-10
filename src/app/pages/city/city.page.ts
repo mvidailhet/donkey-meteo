@@ -16,12 +16,6 @@ export class CityPage implements OnInit {
     this.activatedRoute.params.subscribe(this.handleParams);
   }
   handleParams = (params: Params) => {
-    this.city = {
-      name: params['name'],
-      location: {
-        lat: params['lat'],
-        lng: params['lng'],
-      },
-    };
+    this.city = this.placesService.getCityFromRouteParams(params);
   };
 }

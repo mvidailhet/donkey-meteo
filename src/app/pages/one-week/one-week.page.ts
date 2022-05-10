@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Place } from '../../services/google/places.service';
+import { Place, PlacesService } from '../../services/google/places.service';
 import { OpenWeatherApiService, WeatherIconEnum } from '../../services/open-weather-api/open-weather-api.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class OneWeekPage implements OnInit {
     private openWeatherApiService: OpenWeatherApiService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private placesService: PlacesService,
   ) {}
 
   ngOnInit() {
@@ -51,13 +52,7 @@ export class OneWeekPage implements OnInit {
   }
 
   handleParams = (params: Params) => {
-    this.city = {
-      name: params['name'],
-      location: {
-        lat: params['lat'],
-        lng: params['lng'],
-      },
-    };
+    this.city = this.placesService.getCityFromRouteParams(params);
     this.getOneWeekWeatherCity(this.city.location.lat, this.city.location.lng);
   };
 }
