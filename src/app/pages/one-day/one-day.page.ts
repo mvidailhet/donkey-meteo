@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Place, PlacesService } from '../../services/google/places.service';
 import { OpenWeatherApiService, WeatherIconEnum } from '../../services/open-weather-api/open-weather-api.service';
@@ -26,6 +26,7 @@ export class OneDayPage implements OnInit, OnDestroy {
     this.city = this.placesService.currentCity;
     this.getOneWeekWeatherCity(this.city?.location.lat, this.city?.location.lng);
     this.fragmentSubscription = this.activatedRoute.fragment.subscribe(this.handleFragment);
+    this.activatedRoute.params.subscribe(this.handleParams);
   }
 
   ngOnDestroy(): void {
@@ -45,7 +46,6 @@ export class OneDayPage implements OnInit, OnDestroy {
       });
       this.oneWeekForecast.hourly.forEach((hour: any) => {
         const ts = new Date(hour.dt * 1000);
-        console.log(ts.toDateString());
       });
       console.log('this.oneWeekForecast :', this.oneWeekForecast);
     });
@@ -56,5 +56,9 @@ export class OneDayPage implements OnInit, OnDestroy {
     if (fragment === null) return;
     this.indexOfDay = Number(fragment);
     console.log('this.indexOfDay :', this.indexOfDay);
+  };
+
+  handleParams = (params: Params) => {
+    console.log('params :>> ', params);
   };
 }

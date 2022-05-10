@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PlacesService } from '../../services/google/places.service';
 
 @Component({
@@ -9,5 +10,5 @@ import { PlacesService } from '../../services/google/places.service';
 export class CityPage {
   city = this.placesService.currentCity;
 
-  constructor(private placesService: PlacesService) {}
+  constructor(private placesService: PlacesService, private activatedRoute: ActivatedRoute) {}
 }

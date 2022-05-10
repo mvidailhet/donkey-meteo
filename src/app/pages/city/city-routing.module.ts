@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { OneDayPage } from '../one-day/one-day.page';
+import { OneWeekPage } from '../one-week/one-week.page';
 
 import { CityPage } from './city.page';
 
@@ -10,21 +12,11 @@ const routes: Routes = [
     children: [
       {
         path: 'one-week',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('../one-week/one-week.module').then((m) => m.OneWeekPageModule),
-          },
-        ],
+        component: OneWeekPage,
       },
       {
         path: 'one-day',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('../one-day/one-day.module').then((m) => m.OneDayPageModule),
-          },
-        ],
+        component: OneDayPage,
       },
       {
         path: '',

@@ -16,20 +16,12 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'city/:name',
+    path: 'city/:name/lat/:lat/lng/:lng',
     loadChildren: () => import('./pages/city/city.module').then((m) => m.CityPageModule),
-  },
-  {
-    path: 'one-week',
-    loadChildren: () => import('./pages/one-week/one-week.module').then((m) => m.OneWeekPageModule),
-  },
-  {
-    path: 'one-day',
-    loadChildren: () => import('./pages/one-day/one-day.module').then((m) => m.OneDayPageModule),
   },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { paramsInheritanceStrategy: 'always' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
