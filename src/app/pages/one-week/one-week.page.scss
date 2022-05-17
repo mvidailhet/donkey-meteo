@@ -9,6 +9,13 @@
   .swiper-button-next {
     margin-right: 2em;
   }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    &:hover {
+      opacity: 0.6;
+    }
+  }
 }
 
 .card {

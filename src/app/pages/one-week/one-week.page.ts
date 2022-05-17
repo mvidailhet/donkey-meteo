@@ -1,5 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import SwiperCore, { Keyboard, Navigation, Pagination, SwiperOptions } from 'swiper';
 import { Place } from '../../services/google/places.service';
 import { OpenWeatherApiService } from '../../services/open-weather-api/open-weather-api.service';
@@ -49,10 +50,14 @@ export class OneWeekPage implements OnInit {
     private openWeatherApiService: OpenWeatherApiService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private platform: Platform,
   ) {}
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(this.handleParams);
+    if (this.platform.is('mobile')) {
+      this.config.navigation = false;
+    }
   }
 
   getOneWeekWeatherCity(lat: number | undefined, lon: number | undefined) {
