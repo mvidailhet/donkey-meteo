@@ -38,18 +38,12 @@ export class OneDayPage implements OnInit, OnDestroy {
         // eslint-disable-next-line no-param-reassign
         day.wind_gust = this.openWeatherApiService.convertMeterPerSecondToKilometrePerHour(day.wind_gust);
       });
-      this.oneWeekForecast.hourly.forEach((hour: any) => {
-        const ts = new Date(hour.dt * 1000);
-      });
-      console.log('this.oneWeekForecast :', this.oneWeekForecast);
     });
   }
 
   handleFragment = (fragment: string | null) => {
-    console.log(`fragment : ${fragment}`);
     if (fragment === null) return;
     this.indexOfDay = Number(fragment);
-    console.log('this.indexOfDay :', this.indexOfDay);
   };
 
   handleParams = (params: Params) => {

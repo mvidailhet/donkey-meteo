@@ -59,16 +59,18 @@ export class OneWeekPage implements OnInit {
         // eslint-disable-next-line no-param-reassign
         day.wind_speed = this.openWeatherApiService.convertMeterPerSecondToKilometrePerHour(day.wind_speed);
       });
-      console.log('this.oneWeekForecast :', this.oneWeekForecast.daily[0]);
     });
   }
 
   goToOneDayPage(index: number) {
     console.log('index :', index);
-    this.router.navigate([`city/${this.city!.name.toLowerCase()}/one-day`], {
-      fragment: index.toString(),
-      queryParamsHandling: 'preserve',
-    });
+    this.router.navigate(
+      [`city/${this.city!.name.toLowerCase()}/lat/${this.city!.location.lat}/lng/${this.city!.location.lng}/one-day`],
+      {
+        fragment: index.toString(),
+        queryParamsHandling: 'preserve',
+      },
+    );
   }
 
   handleParams = (params: Params) => {
