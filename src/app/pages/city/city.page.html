@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>
-      {{ city?.name }}
+      {{ city?.name | titlecase }}
       <ng-container *ngIf="city?.postal_code"> - {{ city?.postal_code }} </ng-container>
     </ion-title>
   </ion-toolbar>
