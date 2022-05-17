@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { OpenWeatherApiService, WeatherIconEnum } from '../../services/open-weather-api/open-weather-api.service';
+import { IonSearchbar } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { Place, PlacesService } from 'src/app/services/google/places.service';
+import { OpenWeatherApiService } from '../../services/open-weather-api/open-weather-api.service';
 
 export interface Cities {
   city: string;
@@ -14,12 +17,23 @@ export interface Cities {
   icon: any;
 }
 
+export interface SearchResult {
+  city: string;
+  zipcode: number;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
+  isLoading = true;
+  searchResults: SearchResult[] | undefined;
+  @ViewChild('searchbarInput') searchbarInput: IonSearchbar | undefined;
+  placesSubscription: Subscription | undefined;
+  isSearching = false;
+
   cities: Cities[] = [
     {
       city: 'Paris',
@@ -187,12 +201,19 @@ export class HomePage implements OnInit {
       icon: undefined,
     },
   ];
-  WeatherIconEnum!: WeatherIconEnum;
 
-  constructor(private openWeatherApiService: OpenWeatherApiService, private router: Router) {}
+  constructor(
+    private placesService: PlacesService,
+    private openWeatherApiService: OpenWeatherApiService,
+    private router: Router,
+  ) {}
+
   ngOnInit(): void {
     this.getCityMapData();
-    // console.log('Object.values(WeatherIconEnum).indexOf(cityIcon) :', Object.values(WeatherIconEnum));
+  }
+
+  ngOnDestroy(): void {
+    this.placesSubscription?.unsubscribe();
   }
 
   getPosition(event: MouseEvent) {
@@ -218,5 +239,29 @@ export class HomePage implements OnInit {
 
   goToCity(place: Cities) {
     this.router.navigate(['city', place.city.toLowerCase(), 'lat', place.location.lat, 'lng', place.location.lng]);
+  }
+
+  async getPlaceAutocomplete() {
+    if (!this.searchbarInput) throw new Error('No searchbar input found !');
+    this.placesService.getPlaceAutocomplete(await this.searchbarInput.getInputElement());
+
+    this.placesSubscription = this.placesService.place$.subscribe((place: Place) => {
+      this.router.navigate(['city', place.name.toLowerCase(), 'lat', place.location.lat, 'lng', place.location.lng]);
+    });
+  }
+
+  showSearchbar() {
+    this.isSearching = true;
+  }
+
+  allowSearch() {
+    this.showSearchbar();
+    setTimeout(() => {
+      this.getPlaceAutocomplete();
+    }, 100);
+  }
+
+  hideSearchbar() {
+    this.isSearching = false;
   }
 }

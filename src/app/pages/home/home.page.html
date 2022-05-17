@@ -5,10 +5,18 @@
     </ion-buttons>
     <ion-title>{{'GLOBAL.APP_TITLE' | translate}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button routerLink="/search">
+      <ion-button (click)="allowSearch()" *ngIf="!isSearching">
         <ion-icon slot="icon-only" name="search"></ion-icon>
       </ion-button>
     </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="primary" *ngIf="isSearching">
+    <ion-buttons slot="end">
+      <ion-button (click)="hideSearchbar()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-searchbar [placeholder]="'PAGES.SEARCH.SEARCHBAR-PLACEHOLDER' | translate" #searchbarInput></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
