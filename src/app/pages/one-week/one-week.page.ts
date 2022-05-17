@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import SwiperCore, { Pagination, SwiperOptions } from 'swiper';
+import SwiperCore, { Keyboard, Navigation, Pagination, SwiperOptions } from 'swiper';
 import { Place } from '../../services/google/places.service';
 import { OpenWeatherApiService } from '../../services/open-weather-api/open-weather-api.service';
 
-SwiperCore.use([Pagination]);
+SwiperCore.use([Pagination, Keyboard, Navigation]);
 @Component({
   selector: 'app-one-week',
   templateUrl: './one-week.page.html',
   styleUrls: ['./one-week.page.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class OneWeekPage implements OnInit {
   city: Place | undefined;
@@ -20,6 +21,10 @@ export class OneWeekPage implements OnInit {
     pagination: {
       clickable: true,
     },
+    keyboard: {
+      enabled: true,
+    },
+    navigation: true,
     breakpoints: {
       '@0.00': {
         slidesPerView: 1,

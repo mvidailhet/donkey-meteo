@@ -1,6 +1,14 @@
 .swiper {
   width: 100%;
   height: 100%;
+
+  .swiper-button-prev {
+    margin-left: 2em;
+  }
+
+  .swiper-button-next {
+    margin-right: 2em;
+  }
 }
 
 .card {
