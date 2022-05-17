@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import SwiperCore, { Pagination, SwiperOptions } from 'swiper';
 import { Place } from '../../services/google/places.service';
-import { OpenWeatherApiService, WeatherIconEnum } from '../../services/open-weather-api/open-weather-api.service';
+import { OpenWeatherApiService } from '../../services/open-weather-api/open-weather-api.service';
 
+SwiperCore.use([Pagination]);
 @Component({
   selector: 'app-one-week',
   templateUrl: './one-week.page.html',
@@ -11,7 +13,32 @@ import { OpenWeatherApiService, WeatherIconEnum } from '../../services/open-weat
 export class OneWeekPage implements OnInit {
   city: Place | undefined;
   oneWeekForecast: any;
-  WeatherIconEnum!: WeatherIconEnum;
+
+  config: SwiperOptions = {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    pagination: {
+      clickable: true,
+    },
+    breakpoints: {
+      '@0.00': {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      '@0.75': {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      '@1.00': {
+        slidesPerView: 3,
+        spaceBetween: 40,
+      },
+      '@1.50': {
+        slidesPerView: 4,
+        spaceBetween: 50,
+      },
+    },
+  };
 
   constructor(
     private openWeatherApiService: OpenWeatherApiService,
