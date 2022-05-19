@@ -25,6 +25,11 @@
   flex-direction: column;
   align-self: center;
   cursor: pointer;
+  transition: background 300ms ease-in-out;
+
+  &:hover {
+    background: #eee;
+  }
 
   .group-date {
     font-size: 2rem;
