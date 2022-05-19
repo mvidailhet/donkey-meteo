@@ -5,12 +5,12 @@
     </ion-buttons>
     <ion-title>{{'GLOBAL.APP_TITLE' | translate}}</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="allowSearch()" *ngIf="!isSearching">
+      <ion-button (click)="allowSearch()">
         <ion-icon slot="icon-only" name="search"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar color="primary" *ngIf="isSearching">
+  <ion-toolbar [@openClose]="isSearching ? 'open' : 'closed'" color="primary">
     <ion-buttons slot="end">
       <ion-button (click)="hideSearchbar()">
         <ion-icon slot="icon-only" name="close"></ion-icon>

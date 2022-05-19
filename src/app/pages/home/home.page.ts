@@ -1,3 +1,4 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSearchbar } from '@ionic/angular';
@@ -26,6 +27,27 @@ export interface SearchResult {
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
+  animations: [
+    trigger('openClose', [
+      // ...
+      state(
+        'open',
+        style({
+          height: '56px',
+          opacity: 1,
+        }),
+      ),
+      state(
+        'closed',
+        style({
+          height: '0px',
+          opacity: 0.5,
+        }),
+      ),
+      transition('open => closed', [animate('300ms 1ms')]),
+      transition('closed => open', [animate('300ms')]),
+    ]),
+  ],
 })
 export class HomePage implements OnInit, OnDestroy {
   isLoading = true;

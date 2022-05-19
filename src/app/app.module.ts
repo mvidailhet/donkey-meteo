@@ -7,6 +7,7 @@ import localeFr from '@angular/common/locales/fr';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -22,6 +23,7 @@ registerLocaleData(localeFr);
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(),
     TranslateModule.forRoot({
       defaultLanguage: 'fr',
