@@ -34,9 +34,9 @@ export class OneDayPage implements OnInit, OnDestroy {
         // eslint-disable-next-line no-param-reassign
         day.weather[0].icon = this.openWeatherApiService.convertApiIconToAppIcon(day.weather[0].icon);
         // eslint-disable-next-line no-param-reassign
-        day.wind_speed = this.openWeatherApiService.convertMeterPerSecondToKilometrePerHour(day.wind_speed);
+        day.wind_speed = this.openWeatherApiService.convertMeterPerSecondToKilometerPerHour(day.wind_speed);
         // eslint-disable-next-line no-param-reassign
-        day.wind_gust = this.openWeatherApiService.convertMeterPerSecondToKilometrePerHour(day.wind_gust);
+        day.wind_gust = this.openWeatherApiService.convertMeterPerSecondToKilometerPerHour(day.wind_gust);
       });
     });
   }

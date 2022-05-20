@@ -23,12 +23,11 @@
   height: 80%;
   display: flex;
   flex-direction: column;
-  align-self: center;
   cursor: pointer;
-  transition: background 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
 
   &:hover {
-    background: #eee;
+    background-color: #eee;
   }
 
   .group-date {
@@ -52,15 +51,7 @@
     height: 164px;
   }
 
-  .arrow-up {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-    fill: currentColor;
-  }
-
-  .group-data {
+  .temp-and-wind-info {
     font-size: 1.3rem;
 
     .min-temp,
@@ -74,6 +65,21 @@
 
     .max-temp {
       color: #ee5656;
+    }
+
+    .wind-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .wind-arrow {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+        fill: currentColor;
+        margin-right: 1rem;
+      }
     }
   }
 }

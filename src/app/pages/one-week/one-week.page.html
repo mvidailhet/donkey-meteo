@@ -10,25 +10,24 @@
           class="icon weather-icon"
           style="background-image: url(assets/amcharts_weather_icons_1.0.0/animated/{{day.weather[0].icon}}.svg);"
         ></i>
-        <div class="ion-padding-vertical group-data">
-          <div class="max-temp">{{day.temp.max | number: '1.0-0':'fr'}}°C</div>
-          <div class="min-temp">{{day.temp.min | number: '1.0-0':'fr'}}°C</div>
-        </div>
-        <div class="ion-padding-vertical group-data">
-          <span class="arrow-up">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              style="transform: rotate({{day.wind_deg}}deg);"
-              preserveAspectRatio="xMidYMid meet"
-              viewBox="0 0 100 100"
-            >
-              <path id="arrow" d="M 50,0 L 100,100 L 50,70 L 0,100" />
-            </svg>
-            <ion-buttons slot="start">
-              <ion-back-button></ion-back-button>
-            </ion-buttons>
-          </span>
-          {{day.wind_speed | number: '1.0-0':'fr'}} km/h
+        <div class="temp-and-wind-info">
+          <div class="ion-padding-vertical">
+            <div class="max-temp">{{day.temp.max | number: '1.0-0':'fr'}}°C</div>
+            <div class="min-temp">{{day.temp.min | number: '1.0-0':'fr'}}°C</div>
+          </div>
+          <div class="ion-padding-vertical wind-info">
+            <span class="wind-arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                [style]="'transform: rotate(' + day.wind_deg + 'deg)'"
+                preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 100 100"
+              >
+                <path id="arrow" d="M 50,0 L 100,100 L 50,70 L 0,100" />
+              </svg>
+            </span>
+            {{day.wind_speed | number: '1.0-0':'fr'}} km/h
+          </div>
         </div>
       </ion-card>
     </ng-template>
