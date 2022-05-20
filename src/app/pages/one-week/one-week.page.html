@@ -7,13 +7,13 @@
           <div class="date">{{day.dt * 1000 | date: 'dd':'':'fr-FR'}}</div>
         </div>
         <app-weather-icon [icon]="day.weather[0].icon"></app-weather-icon>
-        <div class="temp-and-wind-info">
+        <div class="temp-and-wind-arrow">
           <div class="ion-padding-vertical">
             <ion-text color="max-temp" class="temp-label">{{day.temp.max | number: '1.0-0':'fr'}}°C</ion-text>
             <ion-text color="min-temp" class="temp-label">{{day.temp.min | number: '1.0-0':'fr'}}°C</ion-text>
           </div>
-          <div class="ion-padding-vertical wind-info">
-            <app-wind-info [degRotation]="day.wind_deg"></app-wind-info>
+          <div class="ion-padding-vertical wind-arrow">
+            <app-wind-arrow [degRotation]="day.wind_deg"></app-wind-arrow>
             {{day.wind_speed | number: '1.0-0':'fr'}} km/h
           </div>
         </div>

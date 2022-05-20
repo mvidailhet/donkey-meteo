@@ -7,14 +7,14 @@
           <div class="date ion-padding-bottom">{{currentDayForecast.dt * 1000 | date: 'dd':'':'fr-FR'}}</div>
         </ion-text>
         <ion-grid>
-          <ion-row class="ion-align-items-center temp-and-wind-info">
+          <ion-row class="ion-align-items-center temp-and-wind-arrow">
             <ion-col class="ion-text-center">
               <app-weather-icon [icon]="currentDayForecast.weather[0].icon"></app-weather-icon>
 
               <div>{{currentDayForecast.weather[0].description}}</div>
             </ion-col>
             <ion-col class="ion-text-center">
-              <app-wind-info class="big" [degRotation]="currentDayForecast.wind_deg"></app-wind-info>
+              <app-wind-arrow class="big" [degRotation]="currentDayForecast.wind_deg"></app-wind-arrow>
               <div>{{currentDayForecast.wind_speed | number: '1.0-0':'fr'}} km/h</div>
               <div>
                 {{ 'PAGES.CITY.ONE_DAY.WIND.GUSTS' | translate }} {{currentDayForecast.wind_gust | number:

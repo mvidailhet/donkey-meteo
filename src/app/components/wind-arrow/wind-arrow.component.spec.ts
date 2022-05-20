@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { WindInfoComponent } from './wind-info.component';
+import { WindArrowComponent } from './wind-arrow.component';
 
-describe('WindInfoComponent', () => {
-  let component: WindInfoComponent;
-  let fixture: ComponentFixture<WindInfoComponent>;
+describe('WindArrowComponent', () => {
+  let component: WindArrowComponent;
+  let fixture: ComponentFixture<WindArrowComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [WindInfoComponent],
+      declarations: [WindArrowComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(WindInfoComponent);
+    fixture = TestBed.createComponent(WindArrowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
