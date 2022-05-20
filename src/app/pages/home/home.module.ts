@@ -9,9 +9,10 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { MapItemComponent } from './components/map-item/map-item.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule, TranslateModule.forChild()],
-  declarations: [HomePage, MapItemComponent],
+  declarations: [HomePage, MapComponent, MapItemComponent],
 })
 export class HomePageModule {}
