@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true" class="ion-padding-horizontal">
-  <swiper [config]="config" class="mySwiper">
+  <swiper class="one-week-swiper" [config]="config">
     <ng-template swiperSlide *ngFor="let day of oneWeekForecast?.daily; let i = index">
       <ion-card class="card ion-padding" (click)="goToOneDayPage(i)">
         <div class="ion-padding-vertical group-date">

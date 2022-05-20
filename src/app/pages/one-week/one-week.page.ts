@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import SwiperCore, { Keyboard, Navigation, Pagination, SwiperOptions } from 'swiper';
@@ -10,7 +10,6 @@ SwiperCore.use([Pagination, Keyboard, Navigation]);
   selector: 'app-one-week',
   templateUrl: './one-week.page.html',
   styleUrls: ['./one-week.page.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class OneWeekPage implements OnInit {
   city: Place | undefined;
