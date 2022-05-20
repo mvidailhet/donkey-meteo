@@ -8,9 +8,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
+import { MapItemComponent } from './components/map-item/map-item.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule, TranslateModule.forChild()],
-  declarations: [HomePage],
+  declarations: [HomePage, MapItemComponent],
 })
 export class HomePageModule {}

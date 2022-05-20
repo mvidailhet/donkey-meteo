@@ -23,28 +23,5 @@
       stroke-opacity: 1;
       stroke-width: 0.5;
     }
-
-    .city-container {
-      fill: var(--ion-color-map-city-background);
-      fill-opacity: 0.8;
-      stroke-width: 1;
-    }
-
-    .city-overlay {
-      fill-opacity: 0;
-      cursor: pointer;
-      transition: fill-opacity ease-in-out 0.3s;
-
-      &:hover {
-        fill-opacity: 0.3;
-      }
-    }
-    text {
-      fill: var(--ion-text-color);
-
-      &.city-name {
-        font-weight: bold;
-      }
-    }
   }
 }

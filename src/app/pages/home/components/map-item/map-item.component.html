@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveAspectRatio="xMidYMid meet" viewBox="0 0 670 610">
+  <rect
+    [attr.x]="city.positionX - 20"
+    [attr.y]="city.positionY - 10"
+    width="100px"
+    height="60px"
+    rx="8"
+    class="city-container"
+  />
+  <text [attr.x]="city.positionX - 15" [attr.y]="city.positionY + 10" class="city-name">{{ city.city }}</text>
+
+  <text
+    [attr.x]="city.positionX + 30"
+    [attr.y]="city.positionY + 35"
+    *ngIf="city.dataWeather && city.dataWeather.weather && city.dataWeather.weather.length > 0"
+  >
+    {{ city.dataWeather.main.temp | number: '1.0-0' }}°C
+  </text>
+
+  <image
+    *ngIf="city.dataWeather && city.dataWeather.weather && city.dataWeather.weather.length > 0"
+    [attr.xlink:href]="city.icon"
+    [attr.x]="city.positionX - 20"
+    [attr.y]="city.positionY + 5"
+    height="50px"
+    width="50px"
+  >
+    <desc>{{ city.dataWeather.weather[0].description }}</desc>
+  </image>
+  <rect
+    [attr.x]="city.positionX - 20"
+    [attr.y]="city.positionY - 10"
+    width="100px"
+    height="60px"
+    rx="8"
+    class="city-overlay"
+  />
+</svg>
