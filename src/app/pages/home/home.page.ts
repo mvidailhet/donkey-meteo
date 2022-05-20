@@ -29,7 +29,6 @@ export interface SearchResult {
   styleUrls: ['./home.page.scss'],
   animations: [
     trigger('openClose', [
-      // ...
       state(
         'open',
         style({
@@ -44,7 +43,7 @@ export interface SearchResult {
           opacity: 0.5,
         }),
       ),
-      transition('open => closed', [animate('300ms 1ms')]),
+      transition('open => closed', [animate('300ms')]),
       transition('closed => open', [animate('300ms')]),
     ]),
   ],

@@ -10,7 +10,7 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar [@openClose]="isSearching ? 'open' : 'closed'" color="primary">
+  <ion-toolbar [@openClose]="isSearching ? 'open' : 'closed'" color="primary" class="search-toolbar">
     <ion-buttons slot="end">
       <ion-button (click)="hideSearchbar()">
         <ion-icon slot="icon-only" name="close"></ion-icon>

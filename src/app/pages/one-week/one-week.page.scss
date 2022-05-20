@@ -28,7 +28,7 @@
   transition: background-color 300ms ease-in-out;
 
   &:hover {
-    background-color: #eee;
+    background-color: var(--ion-color-card-background-hover);
   }
 
   .group-date {

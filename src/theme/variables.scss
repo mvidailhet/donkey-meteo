@@ -91,6 +91,9 @@
 	--ion-color-max-temp-shade: #d14c4c;
 	--ion-color-max-temp-tint: #f06767;
 
+  --ion-color-card-background-hover: #eee;
+  --ion-color-map-city-background: var(--ion-item-background);
+
 }
 
 .ion-color-max-temp {
@@ -180,6 +183,9 @@
     --ion-color-light-contrast-rgb: 255,255,255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+
+    --ion-color-card-background-hover: #333;
+    --ion-color-map-city-background: #555;
   }
 
   /*
