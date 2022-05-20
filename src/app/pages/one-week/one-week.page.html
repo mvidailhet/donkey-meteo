@@ -12,8 +12,8 @@
         ></i>
         <div class="temp-and-wind-info">
           <div class="ion-padding-vertical">
-            <div class="max-temp">{{day.temp.max | number: '1.0-0':'fr'}}°C</div>
-            <div class="min-temp">{{day.temp.min | number: '1.0-0':'fr'}}°C</div>
+            <ion-text color="max-temp" class="temp-label">{{day.temp.max | number: '1.0-0':'fr'}}°C</ion-text>
+            <ion-text color="min-temp" class="temp-label">{{day.temp.min | number: '1.0-0':'fr'}}°C</ion-text>
           </div>
           <div class="ion-padding-vertical wind-info">
             <span class="wind-arrow">

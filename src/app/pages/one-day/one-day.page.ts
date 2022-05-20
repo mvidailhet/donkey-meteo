@@ -15,6 +15,7 @@ export class OneDayPage implements OnInit, OnDestroy {
   WeatherIconEnum!: WeatherIconEnum;
   fragmentSubscription: Subscription | undefined;
   indexOfDay = 0;
+  currentDayForecast: any;
 
   constructor(private openWeatherApiService: OpenWeatherApiService, private activatedRoute: ActivatedRoute) {}
 
@@ -27,17 +28,24 @@ export class OneDayPage implements OnInit, OnDestroy {
     this.fragmentSubscription?.unsubscribe();
   }
 
-  getOneWeekWeatherCity(lat: number | undefined, lon: number | undefined) {
+  getCurrentDayWeatherCity(lat: number | undefined, lon: number | undefined) {
     this.openWeatherApiService.getOneWeekWeatherCity(lat, lon).subscribe((response) => {
       this.oneWeekForecast = response;
-      this.oneWeekForecast.daily.forEach((day: any) => {
-        // eslint-disable-next-line no-param-reassign
-        day.weather[0].icon = this.openWeatherApiService.convertApiIconToAppIcon(day.weather[0].icon);
-        // eslint-disable-next-line no-param-reassign
-        day.wind_speed = this.openWeatherApiService.convertMeterPerSecondToKilometerPerHour(day.wind_speed);
-        // eslint-disable-next-line no-param-reassign
-        day.wind_gust = this.openWeatherApiService.convertMeterPerSecondToKilometerPerHour(day.wind_gust);
-      });
+
+      this.currentDayForecast = this.oneWeekForecast.daily[this.indexOfDay];
+
+      // eslint-disable-next-line no-param-reassign
+      this.currentDayForecast.weather[0].icon = this.openWeatherApiService.convertApiIconToAppIcon(
+        this.currentDayForecast.weather[0].icon,
+      );
+      // eslint-disable-next-line no-param-reassign
+      this.currentDayForecast.wind_speed = this.openWeatherApiService.convertMeterPerSecondToKilometerPerHour(
+        this.currentDayForecast.wind_speed,
+      );
+      // eslint-disable-next-line no-param-reassign
+      this.currentDayForecast.wind_gust = this.openWeatherApiService.convertMeterPerSecondToKilometerPerHour(
+        this.currentDayForecast.wind_gust,
+      );
     });
   }
 
@@ -54,6 +62,6 @@ export class OneDayPage implements OnInit, OnDestroy {
         lng: params['lng'],
       },
     };
-    this.getOneWeekWeatherCity(this.city.location.lat, this.city.location.lng);
+    this.getCurrentDayWeatherCity(this.city.location.lat, this.city.location.lng);
   };
 }

@@ -54,17 +54,9 @@
   .temp-and-wind-info {
     font-size: 1.3rem;
 
-    .min-temp,
-    .max-temp {
+    .temp-label {
       padding: 0.5rem;
-    }
-
-    .min-temp {
-      color: #56a0ee;
-    }
-
-    .max-temp {
-      color: #ee5656;
+      display: block;
     }
 
     .wind-info {
