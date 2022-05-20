@@ -9,10 +9,8 @@
         <ion-grid>
           <ion-row class="ion-align-items-center temp-and-wind-info">
             <ion-col class="ion-text-center">
-              <i
-                class="icon weather-icon"
-                style="background-image: url(assets/amcharts_weather_icons_1.0.0/animated/{{currentDayForecast.weather[0].icon}}.svg);"
-              ></i>
+              <app-weather-icon [icon]="currentDayForecast.weather[0].icon"></app-weather-icon>
+
               <div>{{currentDayForecast.weather[0].description}}</div>
             </ion-col>
             <ion-col class="ion-text-center">

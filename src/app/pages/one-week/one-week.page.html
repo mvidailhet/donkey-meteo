@@ -6,10 +6,7 @@
           <div class="day">{{day.dt * 1000 | date: 'E':'':'fr-FR' | titlecase}}</div>
           <div class="date">{{day.dt * 1000 | date: 'dd':'':'fr-FR'}}</div>
         </div>
-        <i
-          class="icon weather-icon"
-          style="background-image: url(assets/amcharts_weather_icons_1.0.0/animated/{{day.weather[0].icon}}.svg);"
-        ></i>
+        <app-weather-icon [icon]="day.weather[0].icon"></app-weather-icon>
         <div class="temp-and-wind-info">
           <div class="ion-padding-vertical">
             <ion-text color="max-temp" class="temp-label">{{day.temp.max | number: '1.0-0':'fr'}}°C</ion-text>
