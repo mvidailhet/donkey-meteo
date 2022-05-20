@@ -31,7 +31,6 @@
       preserveAspectRatio="xMidYMid meet"
       viewBox="0 0 670 610"
     >
-      <defs></defs>
       <g>
         <path
           id="FR-A"
@@ -172,6 +171,7 @@
           [attr.y]="city.positionY - 10"
           width="100px"
           height="60px"
+          rx="8"
           class="city-container"
         />
         <text [attr.x]="city.positionX - 15" [attr.y]="city.positionY + 10" class="city-name">{{city.city}}</text>
@@ -199,6 +199,7 @@
           [attr.y]="city.positionY - 10"
           width="100px"
           height="60px"
+          rx="8"
           class="city-overlay"
           (click)="goToCity(city)"
         />
