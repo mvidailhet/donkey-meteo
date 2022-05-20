@@ -14,16 +14,7 @@
               <div>{{currentDayForecast.weather[0].description}}</div>
             </ion-col>
             <ion-col class="ion-text-center">
-              <div class="wind-arrow">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  [style]="'transform: rotate(' + currentDayForecast.wind_deg + 'deg)'"
-                  preserveAspectRatio="xMidYMid meet"
-                  viewBox="0 0 100 100"
-                >
-                  <path id="arrow" d="M 50,0 L 100,100 L 50,70 L 0,100" />
-                </svg>
-              </div>
+              <app-wind-info class="big" [degRotation]="currentDayForecast.wind_deg"></app-wind-info>
               <div>{{currentDayForecast.wind_speed | number: '1.0-0':'fr'}} km/h</div>
               <div>
                 {{ 'PAGES.CITY.ONE_DAY.WIND.GUSTS' | translate }} {{currentDayForecast.wind_gust | number:

@@ -13,16 +13,7 @@
             <ion-text color="min-temp" class="temp-label">{{day.temp.min | number: '1.0-0':'fr'}}°C</ion-text>
           </div>
           <div class="ion-padding-vertical wind-info">
-            <span class="wind-arrow">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                [style]="'transform: rotate(' + day.wind_deg + 'deg)'"
-                preserveAspectRatio="xMidYMid meet"
-                viewBox="0 0 100 100"
-              >
-                <path id="arrow" d="M 50,0 L 100,100 L 50,70 L 0,100" />
-              </svg>
-            </span>
+            <app-wind-info [degRotation]="day.wind_deg"></app-wind-info>
             {{day.wind_speed | number: '1.0-0':'fr'}} km/h
           </div>
         </div>
