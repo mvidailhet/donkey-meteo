@@ -1,0 +1,26 @@
+.one-week-swiper {
+  width: 100%;
+  height: 100%;
+
+  .swiper-button-prev {
+    margin-left: 2em;
+  }
+
+  .swiper-button-next {
+    margin-right: 2em;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 66px;
+    height: 66px;
+    text-align: center;
+    border-radius: 50%;
+    color: var(--ion-color-primary);
+    transition: background-color 300ms ease-in-out;
+
+    &:hover {
+      background-color: rgba(var(--ion-color-primary-rgb), 0.2);
+    }
+  }
+}
