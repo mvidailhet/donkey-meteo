@@ -3,8 +3,8 @@
     <ion-row scrollY="true" class="scroll-items">
       <ion-col *ngIf="currentDayForecast">
         <ion-text class="date ion-text-center ion-text-uppercase" color="primary">
-          <div class="day ion-padding-top">{{currentDayForecast.dt * 1000 | date: 'E':'':'fr-FR' | titlecase}}</div>
-          <div class="date ion-padding-bottom">{{currentDayForecast.dt * 1000 | date: 'dd':'':'fr-FR'}}</div>
+          <div class="day">{{currentDayForecast.dt * 1000 | date: 'E':'':'fr-FR' | titlecase}}</div>
+          <div class="date">{{currentDayForecast.dt * 1000 | date: 'dd':'':'fr-FR'}}</div>
         </ion-text>
         <ion-grid>
           <ion-row class="ion-align-items-center temp-and-wind-arrow">
