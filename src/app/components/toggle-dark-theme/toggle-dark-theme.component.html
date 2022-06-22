@@ -1,0 +1,3 @@
+<ion-icon name="moon" *ngIf="dark"></ion-icon>
+<ion-icon name="sunny" *ngIf="!dark"></ion-icon>
+<ion-toggle color="light" slot="end" [(ngModel)]="dark" (ionChange)="toggleTheme()"></ion-toggle>

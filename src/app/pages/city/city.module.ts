@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { SwiperModule } from 'swiper/angular';
 import { WeatherIconComponent } from 'src/app/components/weather-icon/weather-icon.component';
+import { ToggleDarkThemeComponent } from 'src/app/components/toggle-dark-theme/toggle-dark-theme.component';
 import { ComponentsModule } from '../../components/components.module';
 import { CityPageRoutingModule } from './city-routing.module';
 
