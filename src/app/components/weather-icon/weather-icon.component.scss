@@ -1,4 +1,3 @@
-
 .icon {
   background-repeat: no-repeat;
   background-size: contain;
@@ -9,5 +8,11 @@
 
 .weather-icon {
   width: 100%;
-  height: 164px;
+  height: 100px;
+}
+
+@media screen and (min-height: 640px) {
+  .weather-icon {
+    height: 164px;
+  }
 }
